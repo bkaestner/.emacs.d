@@ -1,4 +1,4 @@
-;;; init.el --- Benjamins Emacs Configuration        -*- lexical-binding: t; -*-
+;;; init.el --- Benjamin's Emacs Configuration        -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2021  
 
@@ -15,82 +15,102 @@
 ;; 2. The configuration should have self-contained sections that can be copied
 ;;    into other configurations if necessary.
 ;; 3. The configuration should be `outline-minor-mode' compatible.
-;; 4. The configuration should provide a nice Emacs experience for me.
+;; 4. There must not be any line-count reducing tricks, such as using
+;;    `setq' with four arguments in a single line.
+;; 5. The configuration should provide a nice Emacs experience for me.
 
 ;;; Code:
 
 ;;; Garbage collection
+;; This reduces the amount of garbage collection during the initialisation phase
+;; of Emacs by increasing both the Garbage collection threshold as well as the
+;; maximum heap usage.
 (setq gc-cons-threshold most-positive-fixnum ; 2^61 bytes
       gc-cons-percentage 0.6)
+;; After Emacs has completely started, reset the values to more sensible ones.
 (add-hook 'emacs-startup-hook
   (lambda ()
-    (setq gc-cons-threshold 16777216 ; 16mb
+    (setq gc-cons-threshold (* 16 1024 1024) ; 16mb
           gc-cons-percentage 0.1)))
 
-;;;; Package management
+;;; Package management
+;; Package management in Emacs can be done in several ways. I personally like
+;; `use-package' together with package.el. Some will prefer straight.el, but I
+;; haven't found the need for it yet.
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(add-to-list 'package-archives '("nongnu" . "https://elpa.gnu.org/nongnu/") t)
-(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
+(dolist (archive '(("melpa" . "https://melpa.org/packages/") ; Community
+                   ("nongnu" . "https://elpa.gnu.org/nongnu/")
+                   ("org" . "https://orgmode.org/elpa/")))   ; Only Org <= 9.5
+  (add-to-list 'package-archives archive t))
 (package-initialize)
 
-;;;; Use-package bootstrap
+;; For the actual package configuration, I use `use-package'. There is also
+;; leaf.el, but I haven't looked into it yet.
 (eval-when-compile
   (unless (package-installed-p 'use-package)
+    ;; This is a seldomly-run part of my configuration, as `use-package' is
+    ;; installed on Emacs first run. However, I therefore need to
+    ;; `package-refresh-contents' regularly on my own.
+    ;; TODO Use an idle-timer to refresh the package-contents if stale?
     (package-refresh-contents)
     (package-install 'use-package))
-  (require 'use-package))
+  (require 'use-package)
+  (setq use-package-always-ensure t))
 
-;;;; Emacs core functionality configuration
-;; No audible bell
-(setq-default visible-bell t)
-;; All things utf-8
-(setq-default buffer-file-coding-system 'utf-8-unix)
-(set-terminal-coding-system 'utf-8)
-(set-language-environment 'utf-8)
-(set-keyboard-coding-system 'utf-8)
-(prefer-coding-system 'utf-8)
-(setq locale-coding-system 'utf-8)
-(set-default-coding-systems 'utf-8)
-(set-terminal-coding-system 'utf-8)
+;;; Emacs core functionality configuration
+(use-package emacs
+  :config
+  ;; No audible bell
+  (setq-default visible-bell t)
+  ;; All things utf-8
+  (setq-default buffer-file-coding-system 'utf-8-unix)
+  (set-terminal-coding-system 'utf-8)
+  (set-language-environment 'utf-8)
+  (set-keyboard-coding-system 'utf-8)
+  (prefer-coding-system 'utf-8)
+  (setq locale-coding-system 'utf-8)
+  (set-default-coding-systems 'utf-8)
+  (set-terminal-coding-system 'utf-8)
 
-;; Don't write backups to all folders
-(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
-(add-to-list 'auto-save-file-name-transforms '(".*" "~/.emacs.d/auto-save-list/" t))
-; (add-to-list 'auto-save-file-name-transforms '((
-;      auto-save-file-name-transforms '((")
-;; No tabs
-(setq-default indent-tabs-mode nil)
-;; Disable usual default bars
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-(scroll-bar-mode -1)
+  ;; Don't write backups to all folders
+  (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+  (add-to-list 'auto-save-file-name-transforms '(".*" "~/.emacs.d/auto-save-list/" t))
 
-;; Add convenience functions from other edtiors
-(global-set-key (kbd "<C-wheel-up>") 'text-scale-increase)
-(global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)
+  ;; No tabs
+  (setq-default indent-tabs-mode nil)
+  ;; Disable usual default bars
+  (tool-bar-mode -1)
+  (menu-bar-mode -1)
+  (scroll-bar-mode -1)
 
-;; Always enable line numbers when programming
-(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+  ;; Add convenience functions from other edtiors
+  (global-set-key (kbd "<C-wheel-up>") 'text-scale-increase)
+  (global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)
 
-;; Save custom variables in custom.el
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(load custom-file)
+  ;; Always enable line numbers when programming
+  (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
-;;; Calendar
-(setq calendar-day-abbrev-array ["So" "Mo" "Di" "Mi" "Do" "Fr" "Sa"]
-      calendar-day-name-array   ["Sonntag" "Montag" "Dienstag" "Mittwoch" "Donnerstag" "Freitag" "Samstag"]
-      calendar-month-name-array ["Januar" "Februar" "März" "April" "Mai" "Juni" "Juli" "August" "September" "Oktober" "November" "Dezember"]
-      calendar-week-start-day   1)
+  ;; Save custom variables in custom.el
+  (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+  (load custom-file))
+;;;; Outline related
+(use-package outline
+  :hook (prog-mode . outline-minor-mode))
+;; TODO: Check whether outline-cycle is in Emacs 28
+(use-package outline-magic
+  :commands outline-cycle
+  :bind (:map outline-minor-mode-map
+              ("<tab>" . #'outline-cycle)))
 
 ;;; Themes
 (load-theme 'wombat)
 
-;;;; Third party packages
+;;; Helpers
 (use-package which-key
   :config
   (which-key-mode 1))
 
+;;; Key bindings
 (use-package evil
   :defer 1
   :config
@@ -174,6 +194,14 @@
   (setq ledger-report-use-strict t)
   (setq ledger-highlight-xact-under-point nil))
 
+;;; Organization
+(use-package calendar
+  :config
+  ;; I like to use the German identifiers for weekdays and months.
+  (setq calendar-day-abbrev-array ["So" "Mo" "Di" "Mi" "Do" "Fr" "Sa"]
+        calendar-day-name-array   ["Sonntag" "Montag" "Dienstag" "Mittwoch" "Donnerstag" "Freitag" "Samstag"]
+        calendar-month-name-array ["Januar" "Februar" "März" "April" "Mai" "Juni" "Juli" "August" "September" "Oktober" "November" "Dezember"]
+        calendar-week-start-day 1))
 
 (use-package org
   :hook ((org-mode . visual-line-mode)
@@ -219,6 +247,9 @@
                           (dot . t)
                           (python . t))))))
 
+(use-package org-superstar
+  :hook (org-mode . org-superstar-mode))
+
 (use-package projectile
   :config
   (projectile-mode t)
@@ -238,6 +269,7 @@
 (use-package company-box
   :hook (company-mode . company-box-mode))
 
+;;; completing-read support
 (use-package ivy
   :config (ivy-mode 1))
 (use-package counsel
@@ -255,7 +287,7 @@
 
 ;;;; IRC and other communication
 (use-package elcord
-  :defer t
+  :defer 10
   :config
   (elcord-mode t))
 
@@ -267,3 +299,8 @@
 
 (use-package erc-hl-nicks
   :hook (erc-mode . erc-hl-nicks-mode))
+
+;; Local Variables:
+;; fill-column: 80
+;; eval: (outline-minor-mode)
+;; End:
