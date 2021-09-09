@@ -172,28 +172,6 @@
   (tyrant-def
     "g" 'magit-status))
 
-(use-package ledger-mode
-  :ensure t
-  :mode "\\.ledger\\'"
-  :bind (
-         :map ledger-mode-map
-         ("C-c C-r" . ledger-report)
-         ;; To get outline-minor-mode in ledger buffers:
-         ("TAB" . org-cycle)
-         :map ledger-report-mode-map
-         ("C-c C-r" . ledger-report))
-  :config
-  ;; For hledger
-  (setq ledger-binary-path "c:/Tools/hLedger/ledger.exe")
-  (setq ledger-default-date-format ledger-iso-date-format)
-
-  (setq ledger-reconcile-default-commodity "EUR")
-  (setq ledger-report-use-header-line t)
-  (setq ledger-report-use-native-highlighting t)
-  (setq ledger-report-auto-refresh-sticky-cursor t)
-  (setq ledger-report-use-strict t)
-  (setq ledger-highlight-xact-under-point nil))
-
 ;;; Organization
 (use-package calendar
   :config
