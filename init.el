@@ -182,8 +182,6 @@
         calendar-week-start-day 1))
 
 (use-package org
-  :hook ((org-mode . visual-line-mode)
-	 (org-mode . org-indent-mode))
   :general
   (general-define-key "C-c c" 'counsel-org-capture)
   (general-define-key "C-c a" 'org-agenda)
@@ -196,6 +194,9 @@
 	    "C-c C-#" 'org-edit-src-exit
 	    "C-c ä" 'org-edit-src-exit)
   :config
+  (add-hook 'org-mode-hook #'visual-line-mode)
+  (add-hook 'org-mode-hook #'org-indent-mode)
+
   ;; Include org-habits for habits in the agenda
   (add-to-list 'org-modules 'org-habit t)
   ;; Enable shift+arrow for text selection
