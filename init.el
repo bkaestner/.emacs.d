@@ -93,6 +93,10 @@
   ;; Save custom variables in custom.el
   (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
   (load custom-file)
+
+  ;; Themes
+  (load-theme 'wombat)
+
   ;; Additional functions
   (defun bk/edit-user-configuration ()
     "Open the user configuration"
@@ -121,9 +125,6 @@
   :commands outline-cycle
   :bind (:map outline-minor-mode-map
               ("<tab>" . #'outline-cycle)))
-
-;;; Themes
-(load-theme 'wombat)
 
 ;;; Helpers
 (use-package which-key
