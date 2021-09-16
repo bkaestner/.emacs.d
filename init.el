@@ -126,6 +126,12 @@
   :bind (:map outline-minor-mode-map
               ("<tab>" . #'outline-cycle)))
 
+(use-package keyfreq
+  :custom
+  (keyfreq-excluded-regexp '("self-insert-command"))
+  :config
+  (keyfreq-mode 1)
+  (keyfreq-autosave-mode 1))
 ;;; Helpers
 (use-package which-key
   :config
