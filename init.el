@@ -146,10 +146,12 @@
 (use-package rainbow-delimiters
   :hook ((prog-mode . rainbow-delimiters-mode)))
 
-(use-package magit)
+(use-package magit
+  :commands (magit magit-status))
 
 ;;; Organization
 (use-package calendar
+  :commands calendar
   :config
   ;; I like to use the German identifiers for weekdays and months.
   (setq calendar-day-abbrev-array ["So" "Mo" "Di" "Mi" "Do" "Fr" "Sa"]
@@ -158,6 +160,7 @@
         calendar-week-start-day 1))
 
 (use-package org
+  :mode "\\.org\\'"
   :bind (("C-c c" . 'counsel-org-capture)
          ("C-c a" . 'org-agenda)
          ("C-c l" . #'org-store-link)
@@ -214,6 +217,7 @@
 	      ("<tab>" . company-indent-or-complete-common)))
 
 (use-package company
+  :defer t
   :hook (prog-mode . company-mode)
   :config
   (setq company-idle-delay 0.08))
@@ -244,6 +248,7 @@
   (elcord-mode t))
 
 (use-package erc
+  :commands erc
   :config
   (setq erc-nick "ashraz"
         erc-server "irc.libera.chat"
