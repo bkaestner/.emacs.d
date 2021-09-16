@@ -111,7 +111,7 @@
     (interactive)
     (load-file user-init-file))
 
-  :bind (("C-c f r" . #'counsel-recentf)
+  :bind (("C-c f r" . #'consult-recent-file)
          ("C-c f e d" . #'bk/edit-user-configuration)
          ("C-c f e c" . #'bk/edit-user-customization)
          ("C-c f e R" . #'bk/load-user-configuration)
@@ -161,16 +161,15 @@
 
 (use-package org
   :mode "\\.org\\'"
-  :bind (("C-c c" . 'counsel-org-capture)
-         ("C-c a" . 'org-agenda)
+  :bind (("C-c c" . #'org-capture)
+         ("C-c a" . #'org-agenda)
          ("C-c l" . #'org-store-link)
          :map org-mode-map
-	 ("C-c C-#" .'org-edit-special)
-	 ("C-c ä" . 'org-edit-special)
-         ("C-c C-q" . 'counsel-org-tag)
+	 ("C-c C-#" . #'org-edit-special)
+	 ("C-c ä" . #'org-edit-special)
          :map org-src-mode-map
-	 ("C-c C-#" . 'org-edit-src-exit)
-	 ( "C-c ä" . 'org-edit-src-exit))
+	 ("C-c C-#" . #'org-edit-src-exit)
+	 ("C-c ä" . #'org-edit-src-exit))
   :config
   (add-hook 'org-mode-hook #'visual-line-mode)
   (add-hook 'org-mode-hook #'org-indent-mode)
@@ -226,12 +225,24 @@
   :hook (company-mode . company-box-mode))
 
 ;;; completing-read support
-(use-package ivy
-  :config (ivy-mode 1))
-(use-package counsel
-  :after ivy
-  :bind (("C-x b" . 'counsel-switch-buffer))
-  :config (counsel-mode 1))
+(use-package vertico
+  :init
+  (vertico-mode)
+  (setq vertico-cycle t))
+
+(use-package savehist
+  :init
+  (savehist-mode))
+
+(use-package marginalia
+  :after vertico
+  :init 
+  (marginalia-mode))
+
+(use-package consult
+  :bind (("C-x b" . #'consult-buffer)
+         ("C-x 4 b" . #'consult-buffer-other-window)
+         ("C-c f r" . #'consult-recent-file)))
 
 ;;; Recent files
 (use-package recentf
