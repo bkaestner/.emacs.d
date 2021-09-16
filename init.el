@@ -92,7 +92,27 @@
 
   ;; Save custom variables in custom.el
   (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-  (load custom-file))
+  (load custom-file)
+  ;; Additional functions
+  (defun bk/edit-user-configuration ()
+    "Open the user configuration"
+    (interactive)
+    (find-file user-init-file))
+  (defun bk/edit-user-customization ()
+    "Edit the custom file"
+    (interactive)
+    (find-file custom-file))
+  (defun bk/load-user-configuration ()
+    "Reloads the user configuration"
+    (interactive)
+    (load-file user-init-file))
+
+  :bind (("C-c f r" . #'counsel-recentf)
+         ("C-c f e d" . #'bk/edit-user-configuration)
+         ("C-c f e c" . #'bk/edit-user-customization)
+         ("C-c f e R" . #'bk/load-user-configuration)
+         ("M-<f4>" . #'save-buffers-kill-emacs)))
+
 ;;;; Outline related
 (use-package outline
   :hook (prog-mode . outline-minor-mode))
@@ -116,61 +136,10 @@
   :config
   (evil-mode t))
 
-(use-package general
-  :after which-key
-  :config
-  (defun edit-user-configuration ()
-    "Open the user configuration"
-    (interactive)
-    (find-file user-init-file))
-  (defun edit-user-customization ()
-    "Edit the custom file"
-    (interactive)
-    (find-file custom-file))
-  (defun load-user-configuration ()
-    "Reloads the user configuration"
-    (interactive)
-    (load-file user-init-file))
-  (general-create-definer tyrant-def
-    :states '(normal insert visual motion emacs)
-    :prefix "SPC"
-    :non-normal-prefix "M-SPC")
-  
-  (tyrant-def
-    "" nil
-
-    ;;; Easier to work with
-    "SPC" 'counsel-M-x
-    "x" (general-simulate-key "C-x")
-    "h" (general-simulate-key "C-h")
-    "c" (general-simulate-key "C-c")
-    "b" 'counsel-switch-buffer
-
-    ;;; Files
-    "f" '(:ignore t :which-key "files")
-
-    ;; Configuration related
-    "fe" '(:ignore t :wk "emacs")
-    "fed" 'edit-user-configuration
-    "fec" 'edit-user-customization
-    "feR" 'load-user-configuration
-
-    ;; Finding files
-    "fr" 'counsel-recentf
-    "ff" 'find-file
-
-    ;; Working with files
-    "fs" 'save-buffer)
-  (general-define-key   
-   "M-<f4>" 'save-buffers-kill-emacs))
-
 (use-package rainbow-delimiters
   :hook ((prog-mode . rainbow-delimiters-mode)))
 
-(use-package magit
-  :general
-  (tyrant-def
-    "g" 'magit-status))
+(use-package magit)
 
 ;;; Organization
 (use-package calendar
@@ -182,17 +151,16 @@
         calendar-week-start-day 1))
 
 (use-package org
-  :general
-  (general-define-key "C-c c" 'counsel-org-capture)
-  (general-define-key "C-c a" 'org-agenda)
-  (general-define-key "C-c l" #'org-store-link)
-  (:keymaps 'org-mode-map
-	    "C-c C-#" 'org-edit-special
-	    "C-c ä" 'org-edit-special
-            "C-c C-q" 'counsel-org-tag)
-  (:keymaps 'org-src-mode-map
-	    "C-c C-#" 'org-edit-src-exit
-	    "C-c ä" 'org-edit-src-exit)
+  :bind (("C-c c" . 'counsel-org-capture)
+         ("C-c a" . 'org-agenda)
+         ("C-c l" . #'org-store-link)
+         :map org-mode-map
+	 ("C-c C-#" .'org-edit-special)
+	 ("C-c ä" . 'org-edit-special)
+         ("C-c C-q" . 'counsel-org-tag)
+         :map org-src-mode-map
+	 ("C-c C-#" . 'org-edit-src-exit)
+	 ( "C-c ä" . 'org-edit-src-exit))
   :config
   (add-hook 'org-mode-hook #'visual-line-mode)
   (add-hook 'org-mode-hook #'org-indent-mode)
@@ -230,11 +198,9 @@
   :hook (org-mode . org-superstar-mode))
 
 (use-package projectile
-  :config
-  (projectile-mode t)
-  :general
-  (tyrant-def
-    "p" 'projectile-command-map))
+  :config (projectile-mode)
+  :bind-keymap
+  ("C-c p" . projectile-command-map))
 
 (use-package rust-mode
   :bind (:map rust-mode-map
@@ -253,7 +219,7 @@
   :config (ivy-mode 1))
 (use-package counsel
   :after ivy
-  :bind (( "C-x b" . 'counsel-switch-buffer))
+  :bind (("C-x b" . 'counsel-switch-buffer))
   :config (counsel-mode 1))
 
 ;;; Recent files
