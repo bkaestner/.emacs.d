@@ -64,26 +64,26 @@
   (setq-default visible-bell t)
   ;; All things utf-8
   (setq-default buffer-file-coding-system 'utf-8-unix)
-  (set-terminal-coding-system 'utf-8)
-  (set-language-environment 'utf-8)
-  (set-keyboard-coding-system 'utf-8)
   (prefer-coding-system 'utf-8)
-  (setq locale-coding-system 'utf-8)
   (set-default-coding-systems 'utf-8)
+  (set-keyboard-coding-system 'utf-8)
+  (set-language-environment 'utf-8)
   (set-terminal-coding-system 'utf-8)
+  (set-terminal-coding-system 'utf-8)
+  (setq locale-coding-system 'utf-8)
 
   ;; Don't write backups to all folders
   (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
   (add-to-list 'auto-save-file-name-transforms '(".*" "~/.emacs.d/auto-save-list/" t))
 
-  ;; No tabs
+  ;; No tabs - except for some files, and Emacs knows which ones.
   (setq-default indent-tabs-mode nil)
   ;; Disable usual default bars
   (tool-bar-mode -1)
   (menu-bar-mode -1)
   (scroll-bar-mode -1)
 
-  ;; Add convenience functions from other edtiors
+  ;; Add convenience bindings from other edtiors
   (global-set-key (kbd "<C-wheel-up>") 'text-scale-increase)
   (global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)
 
