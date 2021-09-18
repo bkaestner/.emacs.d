@@ -183,28 +183,11 @@
   (setq org-support-shift-select t)
   ;; Also include diary on org-agenda
   (setq org-agenda-include-diary t)
-  
-  (defun my-org-confirm-babel-evaluate (lang body)
-    "Check whether LANG should evaluate BODY without confirmation."
-    (not (member lang '("C"
-                        "emacs-lisp"
-		        "cpp"
-                        "haskell"
-		        "plantuml"
-		        "ditaa"
-		        "gnuplot"
-                        "python"
-		        "dot"))))
-  (setq org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate)
 
-  (run-with-idle-timer 1 nil (lambda()
-                       (org-babel-do-load-languages
-                        'org-babel-load-languages
-                        '((C . t)
-                          (haskell . t)
-                          (gnuplot . t)
-                          (dot . t)
-                          (python . t))))))
+  (defun my-org-confirm-babel-evaluate (lang _body)
+    "Check whether LANG should evaluate BODY without confirmation."
+    (not (string= lang "emacs-lisp")))
+  (setq org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate))
 
 (use-package org-superstar
   :hook (org-mode . org-superstar-mode))
