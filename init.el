@@ -201,6 +201,12 @@
 (use-package org-superstar
   :hook (org-mode . org-superstar-mode))
 
+;; Productivity measurements (ha!)
+(use-package activity-watch-mode
+  :defer 5
+  :config
+  (global-activity-watch-mode))
+
 (use-package projectile
   :config (projectile-mode)
   :bind-keymap
