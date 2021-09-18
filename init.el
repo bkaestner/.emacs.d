@@ -1,6 +1,6 @@
 ;;; init.el --- Benjamin's Emacs Configuration        -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2021  
+;; Copyright (C) 2021 Benjamin Kästner
 
 ;; Author:  bkaestner
 ;; Keywords: configuration, misc
@@ -221,7 +221,7 @@
 
 (use-package rust-mode
   :bind (:map rust-mode-map
-	      ("<tab>" . company-indent-or-complete-common)))
+              ("<tab>" . company-indent-or-complete-common)))
 
 (use-package company
   :defer t
@@ -267,7 +267,7 @@
 ;;; Recent files
 (use-package recentf
   :defer 2
-  :config 
+  :config
   (setq recentf-max-saved-items 100)
   (recentf-mode)
   (run-with-idle-timer (* 3 60) t #'recentf-save-list))
