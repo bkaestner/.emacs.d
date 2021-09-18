@@ -174,6 +174,15 @@
   (add-hook 'org-mode-hook #'org-indent-mode)
   (add-hook 'org-mode-hook #'org-display-inline-images)
 
+  ;; `org-capture-templates' might be customized, so only append/add
+  (with-eval-after-load 'org-capture
+    (add-to-list 'org-capture-templates
+                 '("j" "Journal entry" plain
+                   (file+olp+datetree "~/org/journal.org")
+                   "**** %?"
+                   :time-prompt t
+                   :empty-lines 1)))
+
   ;; Resize images to 300px, unless there's an attribute
   (setq org-image-actual-width '(300))
 
