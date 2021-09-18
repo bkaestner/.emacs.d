@@ -74,7 +74,8 @@
 
   ;; Don't write backups to all folders
   (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
-  (add-to-list 'auto-save-file-name-transforms '(".*" "~/.emacs.d/auto-save-list/" t))
+  (add-to-list 'auto-save-file-name-transforms
+               '(".*" "~/.emacs.d/auto-save-list/" t))
 
   ;; No tabs - except for some files, and Emacs knows which ones.
   (setq-default indent-tabs-mode nil)
@@ -154,8 +155,11 @@
   :config
   ;; I like to use the German identifiers for weekdays and months.
   (setq calendar-day-abbrev-array ["So" "Mo" "Di" "Mi" "Do" "Fr" "Sa"]
-        calendar-day-name-array   ["Sonntag" "Montag" "Dienstag" "Mittwoch" "Donnerstag" "Freitag" "Samstag"]
-        calendar-month-name-array ["Januar" "Februar" "März" "April" "Mai" "Juni" "Juli" "August" "September" "Oktober" "November" "Dezember"]
+        calendar-day-name-array   ["Sonntag" "Montag" "Dienstag" "Mittwoch"
+                                   "Donnerstag" "Freitag" "Samstag"]
+        calendar-month-name-array ["Januar" "Februar" "März" "April" "Mai"
+                                   "Juni" "Juli" "August" "September" "Oktober"
+                                   "November" "Dezember"]
         calendar-week-start-day 1))
 
 (use-package org
