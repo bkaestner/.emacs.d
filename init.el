@@ -208,6 +208,7 @@
   (global-activity-watch-mode))
 
 (use-package projectile
+  :defer 1
   :config (projectile-mode)
   :bind-keymap
   ("C-c p" . projectile-command-map))
