@@ -271,9 +271,7 @@
 (use-package erc
   :commands erc
   :config
-  (setq erc-nick "ashraz"
-        erc-server "irc.libera.chat"
-        erc-user-full-name "Ashraz"))
+  (setq erc-server "irc.libera.chat"))
 
 (use-package erc-hl-nicks
   :hook (erc-mode . erc-hl-nicks-mode))
