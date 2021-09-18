@@ -172,6 +172,10 @@
   :config
   (add-hook 'org-mode-hook #'visual-line-mode)
   (add-hook 'org-mode-hook #'org-indent-mode)
+  (add-hook 'org-mode-hook #'org-display-inline-images)
+
+  ;; Resize images to 300px, unless there's an attribute
+  (setq org-image-actual-width '(300))
 
   ;; Include org-habits for habits in the agenda
   (add-to-list 'org-modules 'org-habit t)
