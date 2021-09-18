@@ -236,16 +236,20 @@
 ;; Provides a nicer `completing-read'
 (use-package vertico
   :init
+  (setq completion-styles '(basic partial-completion flex)
+        completion-ignore-case t)
   (vertico-mode)
   (setq vertico-cycle t))
 
+;; Save the history of minibuffer commands (built-in)
 (use-package savehist
   :init
   (savehist-mode))
 
+;; Add more information to selections in `completing-read' / `vertico'
 (use-package marginalia
   :after vertico
-  :init 
+  :init
   (marginalia-mode))
 
 ;; Useful functions for specific situations
