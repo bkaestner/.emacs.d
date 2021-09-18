@@ -114,7 +114,7 @@
   :bind (("C-c f e d" . #'bk/edit-user-configuration)
          ("C-c f e c" . #'bk/edit-user-customization)
          ("C-c f e R" . #'bk/load-user-configuration)
-         ("M-<f4>" . #'save-buffers-kill-emacs)))
+         ("M-<f4>"    . #'save-buffers-kill-emacs)))
 
 ;;;; Outline related
 (use-package outline
@@ -160,15 +160,15 @@
 
 (use-package org
   :mode "\\.org\\'"
-  :bind (("C-c c" . #'org-capture)
-         ("C-c a" . #'org-agenda)
-         ("C-c l" . #'org-store-link)
+  :bind (("C-c c"    . #'org-capture)
+         ("C-c a"    . #'org-agenda)
+         ("C-c l"    . #'org-store-link)
          :map org-mode-map
-	 ("C-c C-#" . #'org-edit-special)
-	 ("C-c ä" . #'org-edit-special)
+         ("C-c C-#"  . #'org-edit-special)
+         ("C-c ä"    . #'org-edit-special)
          :map org-src-mode-map
-	 ("C-c C-#" . #'org-edit-src-exit)
-	 ("C-c ä" . #'org-edit-src-exit))
+         ("C-c C-#"  . #'org-edit-src-exit)
+         ("C-c ä"    . #'org-edit-src-exit))
   :config
   (add-hook 'org-mode-hook #'visual-line-mode)
   (add-hook 'org-mode-hook #'org-indent-mode)
