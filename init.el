@@ -132,8 +132,10 @@
   :config
   (keyfreq-mode 1)
   (keyfreq-autosave-mode 1))
+
 ;;; Helpers
 (use-package which-key
+  :defer 1
   :config
   (which-key-mode 1))
 
