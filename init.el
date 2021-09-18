@@ -7,7 +7,7 @@
 
 ;;; Commentary:
 
-;; This is my GNU Emacs configuration. There area only some goals for this
+;; This is my GNU Emacs configuration. There are some goals for this
 ;; configuration and thus my editor experience:
 ;;
 ;; 1. The total number of lines (including commentary) must never exceed 400
@@ -16,7 +16,7 @@
 ;;    into other configurations if necessary.
 ;; 3. The configuration should be `outline-minor-mode' compatible.
 ;; 4. There must not be any line-count reducing tricks, such as using
-;;    `setq' with four arguments in a single line.
+;;    `setq' with four arguments in a single line. `dolist' is fine.
 ;; 5. The configuration should provide a nice Emacs experience for me.
 
 ;;; Code:
