@@ -111,8 +111,7 @@
     (interactive)
     (load-file user-init-file))
 
-  :bind (("C-c f r" . #'consult-recent-file)
-         ("C-c f e d" . #'bk/edit-user-configuration)
+  :bind (("C-c f e d" . #'bk/edit-user-configuration)
          ("C-c f e c" . #'bk/edit-user-customization)
          ("C-c f e R" . #'bk/load-user-configuration)
          ("M-<f4>" . #'save-buffers-kill-emacs)))
@@ -224,7 +223,8 @@
 (use-package company-box
   :hook (company-mode . company-box-mode))
 
-;;; completing-read support
+;;; Vertic + Marginalia + Consult
+;; Provides a nicer `completing-read'
 (use-package vertico
   :init
   (vertico-mode)
@@ -239,10 +239,17 @@
   :init 
   (marginalia-mode))
 
+;; Useful functions for specific situations
 (use-package consult
-  :bind (("C-x b" . #'consult-buffer)
+  :bind (("C-x b"   . #'consult-buffer)
          ("C-x 4 b" . #'consult-buffer-other-window)
-         ("C-c f r" . #'consult-recent-file)))
+         ("C-c f r" . #'consult-recent-file)
+         ("M-i"     . #'consult-imenu)
+         ("C-s"     . #'consult-line))
+  :init
+  (with-eval-after-load 'evil
+    (evil-define-key 'normal 'global (kbd "SPC b")   #'consult-buffer)
+    (evil-define-key 'normal 'global (kbd "SPC f r") #'consult-recent-file)))
 
 ;;; Recent files
 (use-package recentf
