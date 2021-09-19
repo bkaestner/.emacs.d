@@ -97,6 +97,11 @@
 
   ;; Themes
   (load-theme 'wombat)
+  ;; Center and maximize height
+  (modify-frame-parameters nil
+                           '((fullscreen . fullheight) (width . 140) (top 0)))
+  (set-frame-parameter nil 'left
+                       (/ (- (display-pixel-width) (frame-pixel-width)) 2))
 
   ;; Additional functions
   (defun bk/edit-user-configuration ()
