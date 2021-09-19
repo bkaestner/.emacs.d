@@ -246,6 +246,9 @@
   (vertico-mode)
   (setq vertico-cycle t))
 
+(use-package all-the-icons-completion
+  :hook (marginalia-mode . all-the-icons-completion-marginalia-setup))
+
 ;; Save the history of minibuffer commands (built-in)
 (use-package savehist
   :init
