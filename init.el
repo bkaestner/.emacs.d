@@ -191,8 +191,7 @@
                  '("j" "Journal entry" plain
                    (file+olp+datetree "~/org/journal.org")
                    "**** %?"
-                   :time-prompt t
-                   :empty-lines 1)))
+                   :time-prompt t)))
 
   ;; Resize images to 300px, unless there's an attribute
   (setq org-image-actual-width '(300))
