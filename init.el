@@ -194,10 +194,10 @@
 
   ;; Include org-habits for habits in the agenda
   (add-to-list 'org-modules 'org-habit t)
-  ;; Enable shift+arrow for text selection
-  (setq org-support-shift-select t)
-  ;; Also include diary on org-agenda
-  (setq org-agenda-include-diary t)
+
+  (setq org-support-shift-select  t  ; Enable shift+arrow for text selection
+        org-agenda-include-diary  t  ; Also include diary on org-agenda
+        org-log-into-drawer       t) ; Don' clutter the actual entry with notes
 
   (defun my-org-confirm-babel-evaluate (lang _body)
     "Check whether LANG should evaluate BODY without confirmation."
