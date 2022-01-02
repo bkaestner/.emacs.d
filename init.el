@@ -1,4 +1,4 @@
-;;; init.el --- Benjamin's Emacs Configuration        -*- lexical-binding: t; -*-
+;;;; init.el --- Benjamin's Emacs Configuration        -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2021 Benjamin Kästner
 
@@ -76,6 +76,7 @@
   (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
   (add-to-list 'auto-save-file-name-transforms
                '(".*" "~/.emacs.d/auto-save-list/" t))
+  (setq create-lockfiles nil)
 
   ;; No tabs - except for some files, and Emacs knows which ones.
   (setq-default indent-tabs-mode nil)
