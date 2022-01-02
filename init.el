@@ -260,11 +260,7 @@
          ("C-x 4 b" . #'consult-buffer-other-window)
          ("C-c f r" . #'consult-recent-file)
          ("M-i"     . #'consult-imenu)
-         ("C-s"     . #'consult-line))
-  :init
-  (with-eval-after-load 'evil
-    (evil-define-key 'normal 'global (kbd "SPC b")   #'consult-buffer)
-    (evil-define-key 'normal 'global (kbd "SPC f r") #'consult-recent-file)))
+         ("C-s"     . #'consult-line)))
 
 ;;; Recent files
 (use-package recentf
