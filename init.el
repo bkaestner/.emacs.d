@@ -39,8 +39,7 @@
 ;; haven't found the need for it yet.
 (require 'package)
 (dolist (archive '(("melpa" . "https://melpa.org/packages/") ; Community
-                   ("nongnu" . "https://elpa.gnu.org/nongnu/")
-                   ("org" . "https://orgmode.org/elpa/")))   ; Only Org <= 9.5
+                   ("nongnu" . "https://elpa.gnu.org/nongnu/")))
   (add-to-list 'package-archives archive t))
 (package-initialize)
 
