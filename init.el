@@ -79,10 +79,11 @@
 
   ;; No tabs - except for some files, and Emacs knows which ones.
   (setq-default indent-tabs-mode nil)
-  ;; Disable usual default bars
+  ;; Disable usual default bars and "fancy" things
   (tool-bar-mode -1)
   (menu-bar-mode -1)
   (scroll-bar-mode -1)
+  (setq inhibit-splash-screen t)
 
   ;; Add convenience bindings from other edtiors
   (global-set-key (kbd "<C-wheel-up>") 'text-scale-increase)
@@ -230,7 +231,7 @@
 (use-package company-box
   :hook (company-mode . company-box-mode))
 
-;;; Vertic + Marginalia + Consult
+;;; Vertico + Marginalia + Consult
 ;; Provides a nicer `completing-read'
 (use-package vertico
   :init
