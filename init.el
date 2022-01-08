@@ -179,6 +179,16 @@
   (add-hook 'org-mode-hook #'org-indent-mode)
   (add-hook 'org-mode-hook #'org-display-inline-images)
 
+  (setq org-stuck-projects '("+project/-DONE"
+                             ("TODO" "NEXT" "WAITING" "TODAY") nil nil))
+
+  (with-eval-after-load 'org-agenda
+    (add-to-list 'org-agenda-custom-commands
+                 '("d" "Daily Agenda"
+                   ((agenda "" ((org-agenda-span 'day)))
+                    (todo "NEXT|TODAY")
+                    (stuck "")))))
+
   ;; `org-capture-templates' might be customized, so only append/add
   (with-eval-after-load 'org-capture
     (add-to-list 'org-capture-templates
