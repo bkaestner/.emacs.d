@@ -178,6 +178,14 @@
   (add-hook 'org-mode-hook #'visual-line-mode)
   (add-hook 'org-mode-hook #'org-indent-mode)
   (add-hook 'org-mode-hook #'org-display-inline-images)
+  (setq org-todo-keywords
+      '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
+        (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)")
+        (sequence "TODAY(T)" "|")))
+
+  (setq org-todo-keyword-faces
+        '(("WAITING" org-warning :weight bold)
+          ("HOLD" org-warning :weight bold)))
 
   (setq org-stuck-projects '("+project/-DONE"
                              ("TODO" "NEXT" "WAITING" "TODAY") nil nil))
