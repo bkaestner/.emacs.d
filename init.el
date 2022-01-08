@@ -175,9 +175,9 @@
          ("C-c C-#"  . #'org-edit-src-exit)
          ("C-c ä"    . #'org-edit-src-exit))
   :config
-  (add-hook 'org-mode-hook #'visual-line-mode)
-  (add-hook 'org-mode-hook #'org-indent-mode)
-  (add-hook 'org-mode-hook #'org-display-inline-images)
+  (dolist (what '(visual-line-mode org-indent-mode org-display-inline-images))
+    (add-hook 'org-mode-hook what))
+
   (setq org-todo-keywords
       '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
         (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)")
