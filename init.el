@@ -209,14 +209,17 @@
   ;; Include org-habits for habits in the agenda
   (add-to-list 'org-modules 'org-habit t)
 
-  (setq org-support-shift-select  t  ; Enable shift+arrow for text selection
-        org-agenda-include-diary  t  ; Also include diary on org-agenda
-        org-log-into-drawer       t) ; Don' clutter the actual entry with notes
+  (setq org-support-shift-select  t   ; Enable shift+arrow for text selection
+        org-agenda-include-diary  t   ; Also include diary on org-agenda
+        org-log-into-drawer       t)  ; Don' clutter the actual entry with notes
 
   (defun my-org-confirm-babel-evaluate (lang _body)
     "Check whether LANG should evaluate BODY without confirmation."
     (not (string= lang "emacs-lisp")))
-  (setq org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate))
+  (setq org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate)
+
+  (run-with-idle-timer 60 nil (apply-partially #'org-agenda-prepare-buffers
+                                               (org-agenda-files t t))))
 
 (use-package org-superstar
   :hook (org-mode . org-superstar-mode))
