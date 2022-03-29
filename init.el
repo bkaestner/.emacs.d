@@ -1,6 +1,6 @@
 ;;;; init.el --- Benjamin's Emacs Configuration        -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2021 Benjamin Kästner
+;; Copyright (C) 2021-2022 Benjamin Kästner
 
 ;; Author:  bkaestner
 ;; Keywords: configuration, misc
@@ -53,8 +53,8 @@
     ;; TODO Use an idle-timer to refresh the package-contents if stale?
     (package-refresh-contents)
     (package-install 'use-package))
-  (require 'use-package)
-  (setq use-package-always-ensure t))
+  (setq use-package-enable-imenu-support t)
+  (require 'use-package))
 
 ;;; Emacs core functionality configuration
 (use-package emacs
