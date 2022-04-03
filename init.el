@@ -104,21 +104,16 @@
 
   ;; Additional functions
   (defun bk/edit-user-configuration ()
-    "Open the user configuration"
+    "Open the user configuration."
     (interactive)
     (find-file user-init-file))
   (defun bk/edit-user-customization ()
-    "Edit the custom file"
+    "Edit the custom file."
     (interactive)
     (find-file custom-file))
-  (defun bk/load-user-configuration ()
-    "Reloads the user configuration"
-    (interactive)
-    (load-file user-init-file))
 
   :bind (("C-c f e d" . #'bk/edit-user-configuration)
          ("C-c f e c" . #'bk/edit-user-customization)
-         ("C-c f e R" . #'bk/load-user-configuration)
          ("M-<f4>"    . #'save-buffers-kill-emacs)))
 
 ;;;; Outline related
