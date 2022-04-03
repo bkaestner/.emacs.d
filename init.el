@@ -48,11 +48,12 @@
 (eval-when-compile
   (unless (package-installed-p 'use-package)
     ;; This is a seldomly-run part of my configuration, as `use-package' is
-    ;; installed on Emacs first run. However, I therefore need to
-    ;; `package-refresh-contents' regularly on my own.
-    ;; TODO Use an idle-timer to refresh the package-contents if stale?
+    ;; installed on Emacs' first run.
     (package-refresh-contents)
-    (package-install 'use-package))
+    (package-install 'use-package)
+    ;; Only in the first run all packages configured within this file will get
+    ;; ensured. Speeds up other startups quite nicely.
+    (setq use-package-always-ensure t))
   (setq use-package-enable-imenu-support t)
   (require 'use-package))
 
