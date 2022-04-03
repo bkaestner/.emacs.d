@@ -86,10 +86,6 @@
   (scroll-bar-mode -1)
   (setq inhibit-splash-screen t)
 
-  ;; Add convenience bindings from other edtiors
-  (global-set-key (kbd "<C-wheel-up>") 'text-scale-increase)
-  (global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)
-
   ;; Always enable line numbers when programming
   (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
