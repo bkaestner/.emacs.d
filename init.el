@@ -274,7 +274,7 @@
 
 ;;;; IRC and other communication
 (use-package elcord
-  :defer 10
+  :disabled
   :config
   (elcord-mode t))
 
