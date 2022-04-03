@@ -119,11 +119,6 @@
 ;;;; Outline related
 (use-package outline
   :hook (prog-mode . outline-minor-mode))
-;; TODO: Check whether outline-cycle is in Emacs 28
-(use-package outline-magic
-  :commands outline-cycle
-  :bind (:map outline-minor-mode-map
-              ("<tab>" . #'outline-cycle)))
 
 ;;; Helpers
 (use-package which-key
