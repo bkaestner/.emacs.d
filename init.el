@@ -167,9 +167,9 @@
     (add-hook 'org-mode-hook what))
 
   (setq org-todo-keywords
-      '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
-        (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)")
-        (sequence "TODAY(T)" "|")))
+        '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
+          (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)")
+          (sequence "TODAY(T)" "|")))
 
   (setq org-todo-keyword-faces
         '(("WAITING" org-warning :weight bold)
