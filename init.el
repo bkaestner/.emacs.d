@@ -92,7 +92,7 @@
   (load custom-file)
 
   ;; Themes
-  (load-theme 'wombat)
+  (load-theme 'modus-vivendi)
 
   ;; Reload previous buffers and configurations
   (desktop-save-mode)
