@@ -209,11 +209,6 @@
 (use-package org-superstar
   :hook (org-mode . org-superstar-mode))
 
-(use-package projectile
-  :defer 1
-  :config (projectile-mode)
-  :bind-keymap
-  ("C-c p" . projectile-command-map))
 
 (use-package rust-mode
   :bind (:map rust-mode-map
