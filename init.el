@@ -38,9 +38,7 @@
 ;; `use-package' together with package.el. Some will prefer straight.el, but I
 ;; haven't found the need for it yet.
 (require 'package)
-(dolist (archive '(("melpa" . "https://melpa.org/packages/") ; Community
-                   ("nongnu" . "https://elpa.gnu.org/nongnu/")))
-  (add-to-list 'package-archives archive t))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
 
 ;; For the actual package configuration, I use `use-package'. There is also
