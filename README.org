@@ -1,0 +1,12 @@
+#+TITLE: Yet another minimal GNU Emacs Configuration
+
+This is my minimal Emacs Configuration. /Minimal/ means the following in this regard:
+
+- self-contained :: a single =init.el= that may load more *publicly available* packages and configure them (except for ~custom.el~)
+- small :: the configuration file never exceeds 400 lines in total
+- built-in packages :: if there is a built-in alternative, then that's preferred; if there is a GNU alternative, that's preferred before the MELPA ones
+- system-agnostic :: it should work regardless of the used system
+
+But at the same time, it's an *Emacs* configuration, and as such should have some documentation. Compared to other Emacs users, I deliberately don't use a literate configuration. Instead, I try to write the Lisp in a self-explaining way or add documentation. This documentation is still part of the 400 line limit, so the 400 line limit also forces me to simplify code or remove complex features.
+
+The =custom.el= is a stop-gap for additional configuration settings or being used for machine-specific and private settings, such as my agenda files or my ERC user name.
