@@ -113,7 +113,8 @@
 
 ;;;; Outline related
 (use-package outline
-  :hook (prog-mode . outline-minor-mode))
+  :hook (prog-mode . outline-minor-mode)
+  :custom (outline-minor-mode-cycle t))
 
 ;;; Helpers
 (use-package which-key
