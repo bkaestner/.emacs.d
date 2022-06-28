@@ -67,7 +67,6 @@
   (set-keyboard-coding-system 'utf-8)
   (set-language-environment 'utf-8)
   (set-terminal-coding-system 'utf-8)
-  (set-terminal-coding-system 'utf-8)
   (setq locale-coding-system 'utf-8)
 
   ;; Don't write backups to all folders
