@@ -10,8 +10,8 @@
 ;; This is my GNU Emacs configuration. There are some goals for this
 ;; configuration and thus my editor experience:
 ;;
-;; 1. The total number of lines (including commentary) must never exceed 400
-;;    lines, with `fill-column' set to 80.
+;; 1. The total number of lines (including commentary and early-init.el)
+;;    must never exceed *400 lines*, with `fill-column' set to 80.
 ;; 2. The configuration should have self-contained sections that can be copied
 ;;    into other configurations if necessary.
 ;; 3. The configuration should be `outline-minor-mode' compatible.
@@ -21,17 +21,6 @@
 
 ;;; Code:
 
-;;; Garbage collection
-;; This reduces the amount of garbage collection during the initialisation phase
-;; of Emacs by increasing both the Garbage collection threshold as well as the
-;; maximum heap usage.
-(setq gc-cons-threshold most-positive-fixnum ; 2^61 bytes
-      gc-cons-percentage 0.6)
-;; After Emacs has completely started, reset the values to more sensible ones.
-(add-hook 'emacs-startup-hook
-  (lambda ()
-    (setq gc-cons-threshold (* 16 1024 1024) ; 16mb
-          gc-cons-percentage 0.1)))
 
 ;;; Package management
 ;; Package management in Emacs can be done in several ways. I personally like
@@ -71,11 +60,6 @@
 
   ;; No tabs - except for some files, and Emacs knows which ones.
   (setq-default indent-tabs-mode nil)
-  ;; Disable usual default bars and "fancy" things
-  (tool-bar-mode -1)
-  (menu-bar-mode -1)
-  (scroll-bar-mode -1)
-  (setq inhibit-splash-screen t)
 
   ;; Always enable line numbers when programming
   (add-hook 'prog-mode-hook 'display-line-numbers-mode)
