@@ -61,13 +61,7 @@
   ;; No audible bell
   (setq-default visible-bell t)
   ;; All things utf-8
-  (setq-default buffer-file-coding-system 'utf-8-unix)
-  (prefer-coding-system 'utf-8)
   (set-default-coding-systems 'utf-8)
-  (set-keyboard-coding-system 'utf-8)
-  (set-language-environment 'utf-8)
-  (set-terminal-coding-system 'utf-8)
-  (setq locale-coding-system 'utf-8)
 
   ;; Don't write backups to all folders
   (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
