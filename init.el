@@ -28,7 +28,7 @@
 ;; haven't found the need for it yet.
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-(package-initialize)
+(setq package-quickstart t)
 
 ;; For the actual package configuration, I use `use-package'. There is also
 ;; leaf.el, but I haven't looked into it yet.
