@@ -246,11 +246,6 @@
   (run-with-idle-timer (* 3 60) t #'recentf-save-list))
 
 ;;;; IRC and other communication
-(use-package elcord
-  :disabled
-  :config
-  (elcord-mode t))
-
 (use-package erc
   :commands erc
   :config
