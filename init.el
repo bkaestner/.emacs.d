@@ -45,6 +45,7 @@
   (require 'use-package))
 
 ;;; Emacs core functionality configuration
+;; This section mostly handles and configures built-in packages.
 (use-package emacs
   :config
   ;; No audible bell
@@ -191,7 +192,6 @@
 
 (use-package org-superstar
   :hook (org-mode . org-superstar-mode))
-
 
 (use-package rust-mode
   :bind (:map rust-mode-map

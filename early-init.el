@@ -41,7 +41,6 @@
 (scroll-bar-mode -1)
 (setq inhibit-splash-screen t)
 
-
 ;; Local Variables:
 ;; fill-column: 80
 ;; eval: (outline-minor-mode)
