@@ -87,6 +87,13 @@
   ;; Always enable line numbers when programming
   :hook (prog-mode . display-line-numbers-mode))
 
+(use-package desktop
+  :init
+  ;; Disable eager buffer restore for all buffers; the buffers still get loaded
+  ;; lazily, but more imporantly, the frame position is restored immediately.
+  (setq desktop-restore-eager 0)
+  (desktop-save-mode 1))
+
 (use-package outline
   :hook (prog-mode . outline-minor-mode)
   :custom (outline-minor-mode-cycle t))
