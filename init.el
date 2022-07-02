@@ -51,6 +51,7 @@
   (setq-default visible-bell t)
   ;; All things utf-8
   (set-default-coding-systems 'utf-8)
+  (prefer-coding-system 'utf-8)
 
   ;; Don't write backups to all folders
   (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
