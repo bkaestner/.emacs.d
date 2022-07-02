@@ -63,6 +63,9 @@
   ;; No tabs - except for some files, and Emacs knows which ones.
   (setq-default indent-tabs-mode nil)
 
+  ;; Show possible whitespace problems
+  (setq-default show-trailing-whitespace t)
+
   ;; Save custom variables in custom.el
   (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
   (load custom-file)
