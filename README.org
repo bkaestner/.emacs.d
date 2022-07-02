@@ -2,8 +2,8 @@
 
 This is my minimal Emacs Configuration. /Minimal/ means the following in this regard:
 
-- self-contained :: a single =init.el= that may load more *publicly available* packages and configure them (except for ~custom.el~)
-- small :: the configuration file never exceeds 400 lines in total
+- self-contained :: a pair of =early-init.el= and =init.el= that may load more *publicly available* packages and configure them (except for ~custom.el~)
+- small :: the configuration files never exceeds 400 lines in total
 - built-in packages :: if there is a built-in alternative, then that's preferred; if there is a GNU alternative, that's preferred before the MELPA ones
 - system-agnostic :: it should work regardless of the used system
 
