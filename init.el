@@ -58,7 +58,9 @@
   (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
   (add-to-list 'auto-save-file-name-transforms
                '(".*" "~/.emacs.d/auto-save-list/" t))
-  (setq create-lockfiles nil)
+  (when (member system-type '(windows-nt))
+    ;; Disable lockfiles, as they are a hassle on Windows.
+    (setq create-lockfiles nil))
 
   ;; No tabs - except for some files, and Emacs knows which ones.
   (setq-default indent-tabs-mode nil)
