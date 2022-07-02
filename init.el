@@ -62,9 +62,6 @@
   ;; No tabs - except for some files, and Emacs knows which ones.
   (setq-default indent-tabs-mode nil)
 
-  ;; Always enable line numbers when programming
-  (add-hook 'prog-mode-hook 'display-line-numbers-mode)
-
   ;; Save custom variables in custom.el
   (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
   (load custom-file)
@@ -86,7 +83,10 @@
          ("C-c f e c" . #'bk/edit-user-customization)
          ("M-<f4>"    . #'save-buffers-kill-emacs)))
 
-;;;; Outline related
+(use-package display-line-numbers
+  ;; Always enable line numbers when programming
+  :hook (prog-mode . display-line-numbers-mode))
+
 (use-package outline
   :hook (prog-mode . outline-minor-mode)
   :custom (outline-minor-mode-cycle t))
