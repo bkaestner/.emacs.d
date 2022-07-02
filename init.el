@@ -246,11 +246,6 @@
   (run-with-idle-timer (* 3 60) t #'recentf-save-list))
 
 ;;;; IRC and other communication
-(use-package erc
-  :commands erc
-  :config
-  (setq erc-server "irc.libera.chat"))
-
 (use-package erc-hl-nicks
   :hook (erc-mode . erc-hl-nicks-mode))
 
