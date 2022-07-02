@@ -72,9 +72,6 @@
   ;; Themes
   (load-theme 'modus-vivendi)
 
-  ;; Reload previous buffers and configurations
-  (desktop-save-mode)
-
   ;; Additional functions
   (defun bk/edit-user-configuration ()
     "Open the user configuration."
