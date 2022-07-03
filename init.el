@@ -198,10 +198,6 @@
 (use-package org-superstar
   :hook (org-mode . org-superstar-mode))
 
-(use-package rust-mode
-  :bind (:map rust-mode-map
-              ("<tab>" . company-indent-or-complete-common)))
-
 (use-package company
   :defer t
   :hook (prog-mode . company-mode)
