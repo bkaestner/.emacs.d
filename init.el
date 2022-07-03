@@ -204,9 +204,6 @@
   :config
   (setq company-idle-delay 0.08))
 
-(use-package company-box
-  :hook (company-mode . company-box-mode))
-
 ;;; Vertico + Marginalia + Consult
 ;; Provides a nicer `completing-read'
 (use-package vertico
