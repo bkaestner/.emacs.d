@@ -37,7 +37,6 @@
 ;; this won't prevent the graphical user interface from showing them for a split
 ;; second. Not too much of a deal on *nix, but it's visible on Windows.
 (tool-bar-mode -1)
-(menu-bar-mode -1)
 (scroll-bar-mode -1)
 (setq inhibit-splash-screen t)
 
