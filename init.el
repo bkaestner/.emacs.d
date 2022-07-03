@@ -110,6 +110,9 @@
   :config
   (which-key-mode 1))
 
+(use-package writegood-mode
+  :hook text-mode)
+
 ;;; Key bindings
 (use-package evil
   :defer 1
