@@ -100,10 +100,6 @@
   (setq desktop-restore-eager 0)
   (desktop-save-mode 1))
 
-(use-package outline
-  :hook (prog-mode . outline-minor-mode)
-  :custom (outline-minor-mode-cycle t))
-
 ;;; Helpers
 (use-package which-key
   :defer 1
