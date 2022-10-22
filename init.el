@@ -138,13 +138,7 @@
   :mode ("\\.org\\'" . org-mode)
   :bind (("C-c c"    . #'org-capture)
          ("C-c a"    . #'org-agenda)
-         ("C-c l"    . #'org-store-link)
-         :map org-mode-map
-         ("C-c C-#"  . #'org-edit-special)
-         ("C-c ä"    . #'org-edit-special)
-         :map org-src-mode-map
-         ("C-c C-#"  . #'org-edit-src-exit)
-         ("C-c ä"    . #'org-edit-src-exit))
+         ("C-c l"    . #'org-store-link))
   :config
   (dolist (what '(visual-line-mode org-indent-mode org-display-inline-images))
     (add-hook 'org-mode-hook what))
