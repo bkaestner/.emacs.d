@@ -225,8 +225,7 @@
   :bind (("C-x b"   . #'consult-buffer)
          ("C-x 4 b" . #'consult-buffer-other-window)
          ("C-c f r" . #'consult-recent-file)
-         ("M-i"     . #'consult-imenu)
-         ("C-s"     . #'consult-line)))
+         ("M-i"     . #'consult-imenu)))
 
 ;;; Recent files
 (use-package recentf
