@@ -93,6 +93,10 @@
   ;; Always enable line numbers when programming
   :hook (prog-mode . display-line-numbers-mode))
 
+(use-package winner
+  :init
+  (winner-mode 1))
+
 (use-package desktop
   :init
   ;; Disable eager buffer restore for all buffers; the buffers still get loaded
