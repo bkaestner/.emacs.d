@@ -21,28 +21,28 @@
 
 ;;; Code:
 
-
 ;;; Package management
 ;; Package management in Emacs can be done in several ways. I personally like
 ;; `use-package' together with package.el. Some will prefer straight.el, but I
 ;; haven't found the need for it yet.
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(with-eval-after-load 'package
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/")))
 (setq package-quickstart t)
 
 ;; For the actual package configuration, I use `use-package'. There is also
 ;; leaf.el, but I haven't looked into it yet.
 (eval-when-compile
-  (unless (package-installed-p 'use-package)
+  (setq use-package-enable-imenu-support t)
+  (unless (ignore-errors (require 'use-package))
     ;; This is a seldomly-run part of my configuration, as `use-package' is
     ;; installed on Emacs' first run.
+    (require 'package)
     (package-refresh-contents)
     (package-install 'use-package)
     ;; Only in the first run all packages configured within this file will get
     ;; ensured. Speeds up other startups quite nicely.
-    (setq use-package-always-ensure t))
-  (setq use-package-enable-imenu-support t)
-  (require 'use-package))
+    (setq use-package-always-ensure t)
+    (require 'use-package)))
 
 ;;; Emacs core functionality configuration
 ;; This section mostly handles and configures built-in packages.
