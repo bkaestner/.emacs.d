@@ -106,6 +106,10 @@
   (recentf-mode)
   (run-with-idle-timer (* 3 60) t #'recentf-save-list))
 
+(use-package savehist
+  :init
+  (savehist-mode t))
+
 (use-package saveplace
   :init
   (save-place-mode t))
@@ -223,10 +227,6 @@
 (use-package all-the-icons-completion
   :hook (marginalia-mode . all-the-icons-completion-marginalia-setup))
 
-;; Save the history of minibuffer commands (built-in)
-(use-package savehist
-  :init
-  (savehist-mode))
 
 ;; Add more information to selections in `completing-read' / `vertico'
 (use-package marginalia
