@@ -89,13 +89,6 @@
          ("C-c f e c" . #'bk/edit-user-customization)
          ("M-<f4>"    . #'save-buffers-kill-emacs)))
 
-(use-package display-line-numbers
-  :hook (prog-mode . display-line-numbers-mode))
-
-(use-package winner
-  :init
-  (winner-mode 1))
-
 (use-package desktop
   :init
   ;; Disable eager buffer restore for all buffers; the buffers still get loaded
@@ -103,9 +96,23 @@
   (setq desktop-restore-eager 0)
   (desktop-save-mode 1))
 
+(use-package display-line-numbers
+  :hook (prog-mode . display-line-numbers-mode))
+
+(use-package recentf
+  :defer 2
+  :config
+  (setq recentf-max-saved-items 100)
+  (recentf-mode)
+  (run-with-idle-timer (* 3 60) t #'recentf-save-list))
+
 (use-package saveplace
   :init
   (save-place-mode t))
+
+(use-package winner
+  :init
+  (winner-mode 1))
 
 ;;; Helpers
 (use-package which-key
@@ -233,14 +240,6 @@
          ("C-x 4 b" . #'consult-buffer-other-window)
          ("C-c f r" . #'consult-recent-file)
          ("M-i"     . #'consult-imenu)))
-
-;;; Recent files
-(use-package recentf
-  :defer 2
-  :config
-  (setq recentf-max-saved-items 100)
-  (recentf-mode)
-  (run-with-idle-timer (* 3 60) t #'recentf-save-list))
 
 ;;;; IRC and other communication
 (use-package erc-hl-nicks
