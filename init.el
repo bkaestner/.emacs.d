@@ -65,7 +65,9 @@
   ;; No tabs - except for some files, and Emacs knows which ones.
   (setq-default indent-tabs-mode nil)
 
-  ;; Show possible whitespace problems
+  ;; Use tab key as completion option
+  (setq tab-always-indent 'complete)
+
   (setq-default show-trailing-whitespace t)
 
   ;; Save custom variables in custom.el
