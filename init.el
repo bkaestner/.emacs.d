@@ -68,7 +68,11 @@
   ;; Use tab key as completion option
   (setq tab-always-indent 'complete)
 
+  ;; Show possible whitespace problems...
   (setq-default show-trailing-whitespace t)
+  ;; ... except for read-only buffers (e.g. org-agenda)
+  (add-hook 'read-only-mode-hook
+            (lambda () (setq show-trailing-whitespace (not buffer-read-only))))
 
   ;; Save custom variables in custom.el
   (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
