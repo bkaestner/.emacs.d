@@ -90,7 +90,6 @@
          ("M-<f4>"    . #'save-buffers-kill-emacs)))
 
 (use-package display-line-numbers
-  ;; Always enable line numbers when programming
   :hook (prog-mode . display-line-numbers-mode))
 
 (use-package winner
