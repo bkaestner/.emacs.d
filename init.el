@@ -215,11 +215,9 @@
 (use-package org-superstar
   :hook (org-mode . org-superstar-mode))
 
-(use-package company
-  :defer t
-  :hook (prog-mode . company-mode)
-  :config
-  (setq company-idle-delay 0.08))
+(use-package corfu
+  :init
+  (global-corfu-mode))
 
 ;;; Vertico + Marginalia + Consult
 (use-package all-the-icons-completion
