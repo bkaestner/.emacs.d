@@ -220,8 +220,13 @@
   (global-corfu-mode))
 
 ;;; Vertico + Marginalia + Consult
-(use-package all-the-icons-completion
-  :hook (marginalia-mode . all-the-icons-completion-marginalia-setup))
+;; Provide a nicer `completing-read'
+(use-package vertico
+  :init
+  (setq completion-styles '(basic partial-completion substring)
+        completion-ignore-case t)
+  (vertico-mode)
+  (setq vertico-cycle t))
 
 (use-package consult
   :bind (("C-x b"   . #'consult-buffer)
@@ -230,18 +235,14 @@
          ("M-i"     . #'consult-imenu)))
 
 ;; Add more information to selections in `completing-read' / `vertico'
+(use-package all-the-icons-completion
+  :hook (marginalia-mode . all-the-icons-completion-marginalia-setup))
+
 (use-package marginalia
   :after vertico
   :init
   (marginalia-mode))
 
-;; Provide a nicer `completing-read'
-(use-package vertico
-  :init
-  (setq completion-styles '(basic partial-completion substring)
-        completion-ignore-case t)
-  (vertico-mode)
-  (setq vertico-cycle t))
 
 ;;;; IRC and other communication
 (use-package erc-hl-nicks
