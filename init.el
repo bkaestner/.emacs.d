@@ -160,14 +160,6 @@
   (dolist (what '(visual-line-mode org-indent-mode org-display-inline-images))
     (add-hook 'org-mode-hook what))
 
-  ;; `org-capture-templates' might be customized, so only append/add
-  (with-eval-after-load 'org-capture
-    (add-to-list 'org-capture-templates
-                 '("j" "Journal entry" plain
-                   (file+olp+datetree "~/org/journal.org")
-                   "**** %?"
-                   :time-prompt t)))
-
   ;; Resize images to 300px, unless there's an attribute
   (setq org-image-actual-width '(300))
 
