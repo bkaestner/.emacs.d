@@ -40,6 +40,10 @@
 (scroll-bar-mode -1)
 (setq inhibit-splash-screen t)
 
+;; Next, I certainly dislike the behavior of Emacs frames, namely: whenever you
+;; change any frame or face setting, you will end up with a moved frame.
+(setq frame-inhibit-implied-resize t)
+
 ;; Local Variables:
 ;; fill-column: 80
 ;; eval: (outline-minor-mode)
