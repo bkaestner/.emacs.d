@@ -95,13 +95,6 @@
          ("C-c f e c" . #'bk/edit-user-customization)
          ("M-<f4>"    . #'save-buffers-kill-emacs)))
 
-(use-package desktop
-  :init
-  ;; Disable eager buffer restore for all buffers; the buffers still get loaded
-  ;; lazily, but more imporantly, the frame position is restored immediately.
-  (setq desktop-restore-eager 0)
-  (desktop-save-mode 1))
-
 (use-package display-line-numbers
   :hook (prog-mode . display-line-numbers-mode))
 
