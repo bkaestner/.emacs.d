@@ -160,16 +160,6 @@
   (dolist (what '(visual-line-mode org-indent-mode org-display-inline-images))
     (add-hook 'org-mode-hook what))
 
-  (setq org-todo-keywords
-        '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
-          (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)")
-          (sequence "TODAY(T)" "|")))
-
-  (setq org-todo-keyword-faces
-        '(("WAITING" org-warning :weight bold)
-          ("HOLD" org-warning :weight bold)))
-
-
   ;; `org-capture-templates' might be customized, so only append/add
   (with-eval-after-load 'org-capture
     (add-to-list 'org-capture-templates
