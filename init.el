@@ -128,7 +128,7 @@
 
 ;;; Key bindings
 (use-package evil
-  :defer 1
+  :disabled
   :config
   (evil-mode t))
 
