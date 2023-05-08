@@ -178,9 +178,6 @@
   (run-with-idle-timer 60 nil (apply-partially #'org-agenda-prepare-buffers
                                                (org-agenda-files t t))))
 
-(use-package org-superstar
-  :hook (org-mode . org-superstar-mode))
-
 (use-package corfu
   :init
   (global-corfu-mode))
