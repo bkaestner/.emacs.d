@@ -169,15 +169,6 @@
         '(("WAITING" org-warning :weight bold)
           ("HOLD" org-warning :weight bold)))
 
-  (setq org-stuck-projects '("+project/-DONE"
-                             ("TODO" "NEXT" "WAITING" "TODAY") nil nil))
-
-  (with-eval-after-load 'org-agenda
-    (add-to-list 'org-agenda-custom-commands
-                 '("d" "Daily Agenda"
-                   ((agenda "" ((org-agenda-span 'day)))
-                    (todo "NEXT|TODAY")
-                    (stuck "")))))
 
   ;; `org-capture-templates' might be customized, so only append/add
   (with-eval-after-load 'org-capture
