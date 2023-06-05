@@ -136,6 +136,10 @@
 (use-package magit
   :commands (magit magit-status))
 
+(use-package ssh-agency
+  :if (eq system-type 'windows-nt)
+  :after magit)
+
 ;;; Organization
 (use-package calendar
   :commands calendar
