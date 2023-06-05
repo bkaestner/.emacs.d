@@ -208,6 +208,12 @@
 
 
 ;;;; IRC and other communication
+(use-package erc
+  :defer t
+  :config
+  (add-to-ordered-list 'erc-modules 'log)
+  (erc-update-modules))
+
 (use-package erc-hl-nicks
   :hook (erc-mode . erc-hl-nicks-mode))
 
