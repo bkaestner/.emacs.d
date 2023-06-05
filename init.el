@@ -60,7 +60,11 @@
                '(".*" "~/.emacs.d/auto-save-list/" t))
   (when (member system-type '(windows-nt))
     ;; Disable lockfiles, as they are a hassle on Windows.
-    (setq create-lockfiles nil))
+    (setq create-lockfiles nil)
+
+    ;; Fix Emojis (especially for IRC)
+    (when (member "Segoe UI Emoji" (font-family-list))
+      (set-fontset-font t 'emoji (font-spec :family "Segoe UI Emoji") nil)))
 
   ;; No tabs - except for some files, and Emacs knows which ones.
   (setq-default indent-tabs-mode nil)
@@ -205,7 +209,6 @@
   :after vertico
   :init
   (marginalia-mode))
-
 
 ;;;; IRC and other communication
 (use-package erc
