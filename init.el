@@ -190,9 +190,7 @@
   (setq vertico-cycle t))
 
 (use-package consult
-  :bind (("C-x b"   . #'consult-buffer)
-         ("C-x 4 b" . #'consult-buffer-other-window)
-         ("C-c f r" . #'consult-recent-file)
+  :bind (("C-c f r" . #'consult-recent-file)
          ("M-i"     . #'consult-imenu)))
 
 ;; Add more information to selections in `completing-read' / `vertico'
