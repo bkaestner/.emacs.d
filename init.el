@@ -64,7 +64,13 @@
 
     ;; Fix Emojis (especially for IRC)
     (when (member "Segoe UI Emoji" (font-family-list))
-      (set-fontset-font t 'emoji (font-spec :family "Segoe UI Emoji") nil)))
+      (set-fontset-font t 'emoji (font-spec :family "Segoe UI Emoji") nil))
+
+    ;; Several packages expect xargs or grep; git fortunately provides them.
+    (let ((win-git-usr-directory "c:\\Program Files\\Git\\usr\\bin"))
+      (when (file-accessible-directory-p win-git-usr-directory)
+        (add-to-list 'exec-path win-git-usr-directory t #'string=)
+        (setenv "PATH" (concat (getenv "PATH") ";" win-git-usr-directory)))))
 
   ;; No tabs - except for some files, and Emacs knows which ones.
   (setq-default indent-tabs-mode nil)
