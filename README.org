@@ -10,3 +10,14 @@ This is my minimal Emacs Configuration. /Minimal/ means the following in this re
 But at the same time, it's an *Emacs* configuration, and as such should have some documentation. Compared to other Emacs users, I deliberately don't use a literate configuration. Instead, I try to write the Lisp in a self-explaining way or add documentation. This documentation is still part of the 400 line limit, so the 400 line limit also forces me to simplify code or remove complex features.
 
 The =custom.el= is a stop-gap for additional configuration settings or being used for machine-specific and private settings, such as my agenda files or my ERC user name.
+
+* Disclaimer
+
+I have four Emacs configurations at the moment:
+
+- the one you're currently looking at, which I use on my private machine on Windows 10 and WSL
+- a forked variant that I use in my day job, which has kinda grown too much (Windows 10)
+- a minimal variant, that only has ~30 lines, that I use at a seldomly used machine (again Windows 10), and
+- a variant that is /purely based on the customization interface/, which works shocklingly well (on WSL on my day job machine).
+
+So if you ever find me talking about an Emacs feature but miss it within this configuration, I might have placed it within another environment. Feel free to use GitHub's issue interface to ask questions.
