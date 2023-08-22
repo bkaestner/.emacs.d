@@ -1,6 +1,6 @@
 ;;;; early-init.el --- Benjamin's Emacs Configuration        -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2022 Benjamin Kästner
+;; Copyright (C) 2022-2023 Benjamin Kästner
 
 ;; Author:  bkaestner
 ;; Keywords: configuration, misc
