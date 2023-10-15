@@ -209,6 +209,10 @@
   :init
   (marginalia-mode))
 
+(use-package embark
+  :bind (("C-." . #'embark-act)
+         ("M-." . #'embark-dwim)))
+
 ;;;; IRC and other communication
 (use-package erc
   :defer t
