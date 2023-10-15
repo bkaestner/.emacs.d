@@ -78,6 +78,9 @@
   ;; Use tab key as completion option
   (setq tab-always-indent 'complete)
 
+  ;; Inhibit the startup splash screen
+  (setq inhibit-startup-screen t)
+
   ;; Show possible whitespace problems in code and text files.
   (dolist (hook '(text-mode-hook prog-mode-hook))
     (add-hook hook (lambda () (setq show-trailing-whitespace t))))

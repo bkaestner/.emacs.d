@@ -38,7 +38,6 @@
 ;; second. Not too much of a deal on *nix, but it's visible on Windows.
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
-(setq inhibit-splash-screen t)
 
 ;; Next, I certainly dislike the behavior of Emacs frames, namely: whenever you
 ;; change any frame or face setting, you will end up with a moved frame.
