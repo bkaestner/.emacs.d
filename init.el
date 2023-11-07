@@ -177,6 +177,10 @@
   (run-with-idle-timer 60 nil (apply-partially #'org-agenda-prepare-buffers
                                                (org-agenda-files t t))))
 
+(use-package org-modern
+  :hook org-mode
+  (org-agenda-finalize-hook . org-modern-agenda-mode))
+
 (use-package corfu
   :init
   (global-corfu-mode))
