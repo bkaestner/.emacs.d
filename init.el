@@ -121,12 +121,6 @@
 (use-package writegood-mode
   :hook text-mode)
 
-;;; Key bindings
-(use-package evil
-  :disabled
-  :config
-  (evil-mode t))
-
 (use-package rainbow-delimiters
   :hook ((prog-mode . rainbow-delimiters-mode)))
 
