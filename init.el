@@ -156,7 +156,7 @@
          ("C-c a"    . #'org-agenda)
          ("C-c l"    . #'org-store-link))
   :config
-  (dolist (what '(visual-line-mode org-indent-mode org-display-inline-images))
+  (dolist (what '(visual-line-mode org-display-inline-images))
     (add-hook 'org-mode-hook what))
 
   ;; Resize images to 300px, unless there's an attribute
