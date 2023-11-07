@@ -37,15 +37,18 @@
 ;;; Emacs core functionality configuration
 ;; This section mostly handles and configures built-in packages.
 (use-package emacs
+  :custom
+  (backup-directory-alist '(("." . "~/.emacs.d/backups")) "keep folders clean")
+  (indent-tabs-mode nil "no tabs, Emacs knows execptions like Makefiles")
+  (inhibit-startup-screen t "no need for the startup screen")
+  (tab-always-indent 'complete "use tab key as completion option")
+  (visible-bell t "no audible bell")
   :config
-  ;; No audible bell
-  (setq-default visible-bell t)
   ;; All things utf-8
   (set-default-coding-systems 'utf-8)
   (prefer-coding-system 'utf-8)
 
-  ;; Don't write backups to all folders
-  (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+  ;; Try to save auto-saves within .emacs.d
   (add-to-list 'auto-save-file-name-transforms
                '(".*" "~/.emacs.d/auto-save-list/" t))
   (when (member system-type '(windows-nt))
@@ -61,15 +64,6 @@
       (when (file-accessible-directory-p win-git-usr-directory)
         (add-to-list 'exec-path win-git-usr-directory t #'string=)
         (setenv "PATH" (concat (getenv "PATH") ";" win-git-usr-directory)))))
-
-  ;; No tabs - except for some files, and Emacs knows which ones.
-  (setq-default indent-tabs-mode nil)
-
-  ;; Use tab key as completion option
-  (setq tab-always-indent 'complete)
-
-  ;; Inhibit the startup splash screen
-  (setq inhibit-startup-screen t)
 
   ;; Show possible whitespace problems in code and text files.
   (dolist (hook '(text-mode-hook prog-mode-hook))
