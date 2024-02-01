@@ -27,10 +27,17 @@
       gc-cons-percentage 0.6)
 
 ;; After Emacs has completely started, reset the values to more sensible ones.
-(add-hook 'emacs-startup-hook
-  (lambda ()
-    (setq gc-cons-threshold (* 16 1024 1024) ; 16mb
-          gc-cons-percentage 0.1)))
+(add-hook
+ 'emacs-startup-hook
+ (let ((orig-file-name-handler-alist file-name-handler-alist)
+       (orig-vc-handled-backends vc-handled-backends))
+   (setq file-name-handler-alist nil
+         vc-handled-backends nil)
+   (lambda ()
+     (setq gc-cons-threshold (* 16 1024 1024) ; 16mb
+           gc-cons-percentage 0.1
+           file-name-handler-alist orig-file-name-handler-alist
+           vc-handled-backends orig-vc-handled-backends))))
 
 ;;; Disable UI Elements
 ;; Usually, this code would reside within my `(use-package emacs ...)' form, but
