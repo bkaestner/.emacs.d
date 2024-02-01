@@ -26,13 +26,6 @@
 (setq gc-cons-threshold most-positive-fixnum ; 2^61 bytes
       gc-cons-percentage 0.6)
 
-;; (defun my/crappy-load-advice (orig &rest args)
-;;   (let ((start (current-time)))
-;;     (apply orig args)
-;;     (message "Loading %s via %s took %s seconds." (car args) orig (time-to-seconds (time-subtract (current-time) start)))))
-
-;; (advice-add 'load :around #'my/crappy-load-advice)
-;; (advice-add 'require :around #'my/crappy-load-advice)
 ;; After Emacs has completely started, reset the values to more sensible ones.
 (add-hook 'emacs-startup-hook
   (lambda ()
