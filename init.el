@@ -70,7 +70,14 @@
     (let ((win-git-usr-directory "c:\\Program Files\\Git\\usr\\bin"))
       (when (file-accessible-directory-p win-git-usr-directory)
         (add-to-list 'exec-path win-git-usr-directory t #'string=)
-        (setenv "PATH" (concat (getenv "PATH") ";" win-git-usr-directory)))))
+        (setenv "PATH" (concat (getenv "PATH") ";" win-git-usr-directory))))
+
+    (require 'cl-lib)
+    (with-eval-after-load 'tramp
+      (cl-pushnew '("-tt")
+                  (car (alist-get 'tramp-login-args
+                                  (cdr (assoc "ssh" tramp-methods))))
+                  :test #'equal)))
 
   ;; Show possible whitespace problems in code and text files.
   (dolist (hook '(text-mode-hook prog-mode-hook))
