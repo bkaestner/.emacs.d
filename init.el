@@ -105,7 +105,7 @@
          ("M-<f4>"    . #'save-buffers-kill-emacs)))
 
 (use-package display-line-numbers
-  :hook (prog-mode . display-line-numbers-mode))
+  :hook prog-mode)
 
 (use-package recentf
   :defer 2
