@@ -30,9 +30,16 @@
 (setq package-quickstart t)
 
 ;; For the actual package configuration, I use `use-package'. There are also
-;; leaf.el and setup.el, but I haven't looked into them yet.
+;; leaf.el and setup.el, but I haven't looked into them yet. `use-package' has
+;; some nice benefits, for example `imenu' support.
 (setq use-package-enable-imenu-support t)
-(setq use-package-always-ensure t)
+
+;; The first run of this file needs some bootstrapping, which is detected via
+;; a flag file.
+(unless (file-exists-p (expand-file-name ".bootstrapped" user-emacs-directory))
+  (with-temp-buffer
+    (write-file (expand-file-name ".bootstrapped" user-emacs-directory)))
+  (setq use-package-always-ensure t))
 
 ;;; Emacs core functionality configuration
 ;; This section mostly handles and configures built-in packages.
