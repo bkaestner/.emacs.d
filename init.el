@@ -165,9 +165,9 @@
 
 (use-package org
   :mode ("\\.org\\'" . org-mode)
-  :bind (("C-c c"    . #'org-capture)
-         ("C-c a"    . #'org-agenda)
-         ("C-c l"    . #'org-store-link))
+  :bind (("C-c c"    . org-capture)
+         ("C-c a"    . org-agenda)
+         ("C-c l"    . org-store-link))
   :config
   (dolist (what '(visual-line-mode org-display-inline-images))
     (add-hook 'org-mode-hook what))
@@ -208,8 +208,8 @@
   (setq vertico-cycle t))
 
 (use-package consult
-  :bind (("C-c f r" . #'consult-recent-file)
-         ("M-i"     . #'consult-imenu)))
+  :bind (("C-c f r" . consult-recent-file)
+         ("M-i"     . consult-imenu)))
 
 ;; Add more information to selections in `completing-read' / `vertico'
 (use-package all-the-icons-completion
@@ -221,8 +221,8 @@
   (marginalia-mode))
 
 (use-package embark
-  :bind (("C-." . #'embark-act)
-         ("M-." . #'embark-dwim)))
+  :bind (("C-." . embark-act)
+         ("M-." . embark-dwim)))
 
 ;;;; IRC and other communication
 (use-package erc
