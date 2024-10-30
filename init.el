@@ -191,8 +191,8 @@
                                                (org-agenda-files t t))))
 
 (use-package org-modern
-  :hook org-mode
-  (org-agenda-finalize-hook . org-modern-agenda-mode))
+  :hook ((org-agenda-finalize-hook . org-modern-agenda-mode)
+         org-mode))
 
 (use-package corfu
   :init
