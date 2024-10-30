@@ -234,6 +234,8 @@
 (use-package erc-hl-nicks
   :hook (erc-mode . erc-hl-nicks-mode))
 
+(use-package sly
+  :commands (sly))
 ;; Local Variables:
 ;; fill-column: 80
 ;; eval: (outline-minor-mode)
