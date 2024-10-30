@@ -208,7 +208,8 @@
   (setq vertico-cycle t))
 
 (use-package consult
-  :bind (("C-c f r" . consult-recent-file)
+  :bind (([remap switch-to-buffer] . consult-buffer)
+         ("C-c f r" . consult-recent-file)
          ("M-i"     . consult-imenu)))
 
 ;; Add more information to selections in `completing-read' / `vertico'
