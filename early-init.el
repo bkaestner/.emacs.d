@@ -36,8 +36,9 @@
    (lambda ()
      (setq gc-cons-threshold (* 16 1024 1024) ; 16mb
            gc-cons-percentage 0.1
-           file-name-handler-alist orig-file-name-handler-alist
-           vc-handled-backends orig-vc-handled-backends))))
+           file-name-handler-alist orig-file-name-handler-alist)
+     (setq vc-handled-backends ; a package may have changed something
+           (append orig-vc-handled-backends vc-handled-backends)))))
 
 ;;; Disable UI Elements
 ;; Usually, this code would reside within my `(use-package emacs ...)' form, but
