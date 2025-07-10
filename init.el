@@ -94,6 +94,9 @@
   (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
   (load custom-file)
 
+  ;; Trying out CUA
+  (cua-mode 1)
+
   ;; Themes
   (load-theme 'modus-vivendi)
 
