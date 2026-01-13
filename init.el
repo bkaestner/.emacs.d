@@ -235,7 +235,7 @@
   :config
   (add-to-ordered-list 'erc-modules 'log)
   (when (version<= "30" emacs-version)
-    (add-to-ordered-list 'erc-modules 'nick))
+    (add-to-ordered-list 'erc-modules 'nicks))
   (erc-update-modules))
 
 (use-package erc-hl-nicks
