@@ -174,11 +174,6 @@
         org-agenda-include-diary  t   ; Also include diary on org-agenda
         org-log-into-drawer       t)  ; Don' clutter the actual entry with notes
 
-  (defun my-org-confirm-babel-evaluate (lang _body)
-    "Check whether LANG should evaluate BODY without confirmation."
-    (not (string= lang "emacs-lisp")))
-  (setq org-confirm-babel-evaluate 'my-org-confirm-babel-evaluate)
-
   (run-with-idle-timer 60 nil (apply-partially #'org-agenda-prepare-buffers
                                                (org-agenda-files t t))))
 
