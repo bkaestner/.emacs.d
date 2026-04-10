@@ -94,6 +94,12 @@
   (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
   (load custom-file)
 
+  ;;;; Built-in packages
+  (savehist-mode)    ; save minibuffer history
+  (save-place-mode)  ; save the place of the last visit
+  (winner-mode)      ; allow `winner-undo'
+  (which-key-mode)   ; make bindings explorable
+
   ;; Themes
   (load-theme 'modus-vivendi)
 
@@ -121,23 +127,7 @@
   (recentf-mode)
   (run-with-idle-timer (* 3 60) t #'recentf-save-list))
 
-(use-package savehist
-  :init
-  (savehist-mode t))
-
-(use-package saveplace
-  :init
-  (save-place-mode t))
-
-(use-package winner
-  :init
-  (winner-mode 1))
-
 ;;; Helpers
-(use-package which-key
-  :defer 1
-  :config
-  (which-key-mode 1))
 
 (use-package writegood-mode
   :hook text-mode)
