@@ -46,7 +46,7 @@
 (use-package emacs
   :custom
   (backup-directory-alist '(("." . "~/.emacs.d/backups")) "keep folders clean")
-  (indent-tabs-mode nil "no tabs, Emacs knows execptions like Makefiles")
+  (indent-tabs-mode nil "no tabs, Emacs knows exceptions like Makefiles")
   (inhibit-startup-screen t "no need for the startup screen")
   (tab-always-indent 'complete "use tab key as completion option")
   (visible-bell t "no audible bell")
