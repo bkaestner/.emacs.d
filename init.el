@@ -174,8 +174,11 @@
         org-agenda-include-diary  t   ; Also include diary on org-agenda
         org-log-into-drawer       t)  ; Don't clutter the entry with notes
 
-  (run-with-idle-timer 60 nil (apply-partially #'org-agenda-prepare-buffers
-                                               (org-agenda-files t t))))
+  :init
+  (run-with-idle-timer 60 nil
+                       (lambda ()
+                         (require 'org)
+                         (org-agenda-prepare-buffers (org-agenda-files t t)))))
 
 (use-package org-modern
   :hook ((org-agenda-finalize-hook . org-modern-agenda-mode)
