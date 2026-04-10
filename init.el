@@ -61,6 +61,7 @@
   (inhibit-startup-screen t "no need for the startup screen")
   (tab-always-indent 'complete "use tab key as completion option")
   (visible-bell t "no audible bell")
+  (enable-recursive-minibuffers 1)
   :config
   ;; All things utf-8
   (set-default-coding-systems 'utf-8)
