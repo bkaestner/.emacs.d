@@ -100,6 +100,7 @@
   (winner-mode)      ; allow `winner-undo'
   (which-key-mode)   ; make bindings explorable
   (repeat-mode)      ; ease repeating motions
+  (editorconfig-mode); use the project's specific configuration
 
   ;; Themes
   (load-theme 'modus-vivendi)
