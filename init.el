@@ -92,7 +92,7 @@
   ;; Save custom variables in custom.el. These also contain machine-specific
   ;; customizations, which are not saved within this file.
   (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-  (load custom-file)
+  (load custom-file 'noerror) ; it's fine if the file does not exist yet
 
   ;;;; Built-in packages
   (savehist-mode)     ; save minibuffer history
