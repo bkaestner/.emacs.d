@@ -95,12 +95,12 @@
   (load custom-file)
 
   ;;;; Built-in packages
-  (savehist-mode)    ; save minibuffer history
-  (save-place-mode)  ; save the place of the last visit
-  (winner-mode)      ; allow `winner-undo'
-  (which-key-mode)   ; make bindings explorable
-  (repeat-mode)      ; ease repeating motions
-  (editorconfig-mode); use the project's specific configuration
+  (savehist-mode)     ; save minibuffer history
+  (save-place-mode)   ; save the place of the last visit
+  (winner-mode)       ; allow `winner-undo'
+  (which-key-mode)    ; make bindings explorable
+  (repeat-mode)       ; ease repeating motions
+  (editorconfig-mode) ; use the project's specific configuration
 
   ;; Themes
   (load-theme 'modus-vivendi)
