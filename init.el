@@ -75,26 +75,6 @@
   ;; Try to save auto-saves within .emacs.d
   (add-to-list 'auto-save-file-name-transforms
                '(".*" "~/.emacs.d/auto-save-list/" t))
-  (when (eq system-type 'windows-nt)
-    ;; Disable lockfiles, as they are a hassle on Windows.
-    (setq create-lockfiles nil)
-
-    ;; Fix Emojis (especially for IRC)
-    (when (member "Segoe UI Emoji" (font-family-list))
-      (set-fontset-font t 'emoji (font-spec :family "Segoe UI Emoji") nil))
-
-    ;; Several packages expect xargs or grep; git fortunately provides them.
-    (let ((win-git-usr-directory "c:\\Program Files\\Git\\usr\\bin"))
-      (when (file-accessible-directory-p win-git-usr-directory)
-        (add-to-list 'exec-path win-git-usr-directory t #'string=)
-        (setenv "PATH" (concat (getenv "PATH") ";" win-git-usr-directory))))
-
-    (require 'cl-lib)
-    (with-eval-after-load 'tramp
-      (cl-pushnew '("-tt")
-                  (car (alist-get 'tramp-login-args
-                                  (cdr (assoc "ssh" tramp-methods))))
-                  :test #'equal)))
 
   ;; Show possible whitespace problems in code and text files.
   (dolist (hook '(text-mode-hook prog-mode-hook))
@@ -119,6 +99,28 @@
   :bind (("C-c f e d" . bk/edit-user-configuration)
          ("C-c f e c" . bk/edit-user-customization)
          ("M-<f4>"    . save-buffers-kill-emacs)))
+
+;; Windows-fixes
+(when (eq system-type 'windows-nt)
+  ;; Disable lockfiles, as they are a hassle on Windows.
+  (setq create-lockfiles nil)
+
+  ;; Fix Emojis (especially for IRC)
+  (when (member "Segoe UI Emoji" (font-family-list))
+    (set-fontset-font t 'emoji (font-spec :family "Segoe UI Emoji") nil))
+
+  ;; Several packages expect xargs or grep; git fortunately provides them.
+  (let ((win-git-usr-directory "c:\\Program Files\\Git\\usr\\bin"))
+    (when (file-accessible-directory-p win-git-usr-directory)
+      (add-to-list 'exec-path win-git-usr-directory t #'string=)
+      (setenv "PATH" (concat (getenv "PATH") ";" win-git-usr-directory))))
+
+  (require 'cl-lib)
+  (with-eval-after-load 'tramp
+    (cl-pushnew '("-tt")
+                (car (alist-get 'tramp-login-args
+                                (cdr (assoc "ssh" tramp-methods))))
+                :test #'equal)))
 
 (use-package display-line-numbers
   :hook prog-mode)
