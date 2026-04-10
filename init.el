@@ -221,13 +221,8 @@
   :defer t
   :config
   (add-to-ordered-list 'erc-modules 'log)
-  (when (version<= "30" emacs-version)
-    (add-to-ordered-list 'erc-modules 'nicks))
+  (add-to-ordered-list 'erc-modules 'nicks)
   (erc-update-modules))
-
-(use-package erc-hl-nicks
-  :if (version< emacs-version "30")
-  :hook (erc-mode . erc-hl-nicks-mode))
 
 (use-package sly
   :commands (sly))
