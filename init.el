@@ -160,6 +160,11 @@
   :bind (("C-c c"    . org-capture)
          ("C-c a"    . org-agenda)
          ("C-c l"    . org-store-link))
+  :init
+  (run-with-idle-timer 60 nil
+                       (lambda ()
+                         (require 'org)
+                         (org-agenda-prepare-buffers (org-agenda-files t t))))
   :config
   (dolist (what '(visual-line-mode org-display-inline-images))
     (add-hook 'org-mode-hook what))
@@ -172,13 +177,7 @@
 
   (setq org-support-shift-select  t   ; Enable shift+arrow for text selection
         org-agenda-include-diary  t   ; Also include diary on org-agenda
-        org-log-into-drawer       t)  ; Don't clutter the entry with notes
-
-  :init
-  (run-with-idle-timer 60 nil
-                       (lambda ()
-                         (require 'org)
-                         (org-agenda-prepare-buffers (org-agenda-files t t)))))
+        org-log-into-drawer       t))  ; Don't clutter the entry with notes
 
 (use-package org-modern
   :hook ((org-agenda-finalize-hook . org-modern-agenda-mode)
