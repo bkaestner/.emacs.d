@@ -99,6 +99,7 @@
   (save-place-mode)  ; save the place of the last visit
   (winner-mode)      ; allow `winner-undo'
   (which-key-mode)   ; make bindings explorable
+  (repeat-mode)      ; ease repeating motions
 
   ;; Themes
   (load-theme 'modus-vivendi)
