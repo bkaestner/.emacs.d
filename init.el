@@ -42,6 +42,17 @@
   (setq use-package-always-ensure t))
 
 ;;; Emacs core functionality configuration
+;; Additional function
+(defun bk/edit-user-configuration ()
+  "Open the user configuration."
+  (interactive)
+  (find-file user-init-file))
+
+(defun bk/edit-user-customization ()
+  "Edit the custom file."
+  (interactive)
+  (find-file custom-file))
+
 ;; This section mostly handles and configures built-in packages.
 (use-package emacs
   :custom
@@ -104,16 +115,6 @@
 
   ;; Themes
   (load-theme 'modus-vivendi)
-
-  ;; Additional functions
-  (defun bk/edit-user-configuration ()
-    "Open the user configuration."
-    (interactive)
-    (find-file user-init-file))
-  (defun bk/edit-user-customization ()
-    "Edit the custom file."
-    (interactive)
-    (find-file custom-file))
 
   :bind (("C-c f e d" . bk/edit-user-configuration)
          ("C-c f e c" . bk/edit-user-customization)
