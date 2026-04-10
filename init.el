@@ -172,7 +172,7 @@
 
   (setq org-support-shift-select  t   ; Enable shift+arrow for text selection
         org-agenda-include-diary  t   ; Also include diary on org-agenda
-        org-log-into-drawer       t)  ; Don' clutter the actual entry with notes
+        org-log-into-drawer       t)  ; Don't clutter the entry with notes
 
   (run-with-idle-timer 60 nil (apply-partially #'org-agenda-prepare-buffers
                                                (org-agenda-files t t))))
