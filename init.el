@@ -115,9 +115,9 @@
     (interactive)
     (find-file custom-file))
 
-  :bind (("C-c f e d" . #'bk/edit-user-configuration)
-         ("C-c f e c" . #'bk/edit-user-customization)
-         ("M-<f4>"    . #'save-buffers-kill-emacs)))
+  :bind (("C-c f e d" . bk/edit-user-configuration)
+         ("C-c f e c" . bk/edit-user-customization)
+         ("M-<f4>"    . save-buffers-kill-emacs)))
 
 (use-package display-line-numbers
   :hook prog-mode)
