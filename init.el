@@ -224,6 +224,7 @@
 
 (use-package sly
   :commands (sly))
+
 ;; Local Variables:
 ;; fill-column: 80
 ;; eval: (outline-minor-mode)
