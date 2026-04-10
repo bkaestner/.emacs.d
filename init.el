@@ -134,7 +134,7 @@
   :hook text-mode)
 
 (use-package rainbow-delimiters
-  :hook ((prog-mode . rainbow-delimiters-mode)))
+  :hook (prog-mode . rainbow-delimiters-mode))
 
 (use-package magit
   :commands (magit magit-status))
