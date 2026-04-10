@@ -13,7 +13,7 @@ The =custom.el= is a stop-gap for additional configuration settings or being use
 
 * Disclaimer
 
-I have four Emacs configurations at the moment:
+I have three Emacs configurations at the moment:
 
 - the one you're currently looking at, which I use on my private machines on Windows 10, Linux and WSL,
 - a forked variant that I use in my day job, which has kinda grown too much (Windows 11), and
