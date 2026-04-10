@@ -90,7 +90,7 @@
     (add-hook hook (lambda () (setq show-trailing-whitespace t))))
 
   ;; Save custom variables in custom.el. These also contain machine-specific
-  ;; cusomizations, which are not saved within this file.
+  ;; customizations, which are not saved within this file.
   (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
   (load custom-file)
 
