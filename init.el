@@ -57,9 +57,9 @@
 
   ;; Enable sbcl as inferior lisp program
   (when-let ((sbcl (executable-find "sbcl")))
-      (setq inferior-lisp-program sbcl)
-      (when (eq system-type 'windows-nt)
-          (setq inferior-lisp-program (format "\"%s\"" inferior-lisp-program))))
+    (setq inferior-lisp-program sbcl)
+    (when (eq system-type 'windows-nt)
+      (setq inferior-lisp-program (format "\"%s\"" inferior-lisp-program))))
 
   ;; Try to save auto-saves within .emacs.d
   (add-to-list 'auto-save-file-name-transforms
