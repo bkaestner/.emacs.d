@@ -62,6 +62,8 @@
   (tab-always-indent 'complete "use tab key as completion option")
   (visible-bell t "no audible bell")
   (enable-recursive-minibuffers 1)
+  (completion-styles '(basic partial-completion substring))
+  (completion-ignore-case t)
   :config
   ;; All things utf-8
   (set-default-coding-systems 'utf-8)
@@ -195,8 +197,6 @@
 ;; Provide a nicer `completing-read'
 (use-package vertico
   :init
-  (setq completion-styles '(basic partial-completion substring)
-        completion-ignore-case t)
   (vertico-mode)
   (setq vertico-cycle t))
 
