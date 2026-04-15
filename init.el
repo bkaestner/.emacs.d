@@ -57,14 +57,14 @@
 (use-package emacs
   :custom
   (backup-directory-alist '(("." . "~/.emacs.d/backups")) "keep folders clean")
+  (completion-ignore-case t)
+  (completion-styles '(basic partial-completion substring))
+  (enable-recursive-minibuffers 1)
   (indent-tabs-mode nil "no tabs, Emacs knows exceptions like Makefiles")
   (inhibit-startup-screen t "no need for the startup screen")
+  (save-interprogram-paste-before-kill t "keep system-wide clipboard in ring")
   (tab-always-indent 'complete "use tab key as completion option")
   (visible-bell t "no audible bell")
-  (enable-recursive-minibuffers 1)
-  (completion-styles '(basic partial-completion substring))
-  (completion-ignore-case t)
-  (save-interprogram-paste-before-kill t "keep system-wide clipboard in ring")
   :config
   ;; All things utf-8
   (set-default-coding-systems 'utf-8)
